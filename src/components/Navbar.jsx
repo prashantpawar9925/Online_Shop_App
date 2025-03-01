@@ -15,7 +15,7 @@ export function Navbar() {
             <Container className="d-flex justify-content-between align-items-center">
                 <NavLink to="/" className="navbar-brand">
                     <img src="/imgs/logo.svg" alt="Logo" width="30" height="30" />Prashant 
-                    <span className="text-primary text-color">Welcome To DevOps Junoon (Batch 9)</span>
+                    <span className="text-primary text-color">Welcome To AWS and DevOps </span>
                 </NavLink>
 
                 <div className="d-flex align-items-center gap-3">
