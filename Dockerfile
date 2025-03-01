@@ -1,13 +1,17 @@
-# Stage 1 - Development
-FROM node:18 AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
+#Getting base image for nodeJS
+FROM node:18
 
-# Stage 2 - Production
-FROM node:18-alpine
+# making a working dir for putting code and req. files
 WORKDIR /app
-COPY --from=builder /app .
+
+# copy everything form the source(Host) to the destination (container)
+copy . .
+
+# Install packages
+RUN npm install
+
+# Expose the port
 EXPOSE 5173
-CMD ["npm", "run", "dev"]
+
+# serve the application 
+CMD ["npm","run","dev"]

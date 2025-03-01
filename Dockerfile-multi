@@ -1,0 +1,22 @@
+# Base image to build NPM related packages install (stage 1)(big image)[1 GB]
+FROM node:18  AS builder 
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install 
+
+COPY . .
+
+
+# Base image to run the application only(stage 2)(small image)[400 MB]
+FROM gcr.io/distroless/nodejs18-debian12
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+EXPOSE 5173
+
+CMD ["npm","run","dev"]
